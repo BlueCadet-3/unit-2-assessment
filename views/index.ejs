@@ -5,7 +5,32 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>To-Do List: <%= title %></h1>
+
+  <div>
+  <% if(!todos.length) { %> 
+    <p>There are no To Dos yet!</p>
+  <% } else { %>
+  <ul>
+  <% todos.forEach((todo, idx) => { %>
+  <div>
+    <li>
+      <p> <%= todo %> </p>
+      <form action="/<%= idx %>?_method=DELETE" class="delete-form" method="POST">
+        <button type="submit">X</button>
+      </form>
+    </li>
+  </div>
+    <% }); %>
+  </ul>
+  <% } %>
+</div>
+<div>
+<form action="/" method="POST">
+  <input type="text" name="todo">
+  <button type="submit">Add To Do</button>
+</form>
+</div> 
+
   </body>
 </html>

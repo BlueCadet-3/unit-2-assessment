@@ -7,24 +7,25 @@
   <body>
     <h1>To-Do List: <%= title %></h1>
 
-  <div>
+<div>
   <% if(!todos.length) { %> 
     <p>There are no To Dos yet!</p>
   <% } else { %>
-  <ul>
-  <% todos.forEach((todo, idx) => { %>
-  <div>
-    <li>
-      <p> <%= todo %> </p>
-      <form action="/<%= idx %>?_method=DELETE" class="delete-form" method="POST">
-        <button type="submit">X</button>
-      </form>
-    </li>
-  </div>
-    <% }); %>
-  </ul>
+    <ul>
+      <% todos.forEach((t, idx) => { %>
+        <div>
+          <li>
+            <p> <%= t %> - <%= t.done ? 'done' : 'not done' %> </p>
+            <form action="/<%= idx %>?_method=DELETE" class="delete-form" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </li>
+        </div>
+  <% }); %>
+    </ul>
   <% } %>
 </div>
+
 <div>
 <form action="/" method="POST">
   <input type="text" name="todo">

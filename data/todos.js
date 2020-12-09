@@ -1,1 +1,1 @@
-module.exports = [];
+module.exports = [{ todo: String, done: Boolean }];
